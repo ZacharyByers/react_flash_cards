@@ -4,7 +4,7 @@ import FlashCard from './FlashCard'
 class Cards extends React.Component {
   render() {
     let items = this.props.items.map( item => {
-      return( <FlashCard key={item.id} {...item} /> )
+      return( <FlashCard key={item.id} {...item} removeCard={this.props.removeCard} /> )
     })
 
     return(

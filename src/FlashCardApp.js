@@ -9,11 +9,22 @@ class FlashCardApp extends React.Component {
     this.setState({ items: [...this.state.items, card] })
   }
 
+  removeCard = (id) => {
+    let cardIndex = 0;
+    this.state.items.forEach( (item, i) => {
+      if (item.id === id)
+        cardIndex = i
+    })
+    let newItems = this.state.items.slice()
+    newItems.splice(cardIndex, 1)
+    this.setState({ items: newItems })
+  }
+
   render() {
     return(
       <div className='ui container'>
         <CardForm addCard={this.addCard}/>
-        <Cards items={this.state.items} />
+        <Cards removeCard={this.removeCard} items={this.state.items} />
       </div>
     )
   }
